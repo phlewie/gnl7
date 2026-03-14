@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: susim <susim@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/14 14:24:56 by susim             #+#    #+#             */
+/*   Updated: 2026/03/14 15:00:55 by susim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char	*append_to_buffer(char *buffer, char *buf, int n)
 {
 	char	*tmp;
+
 	buf[n] = '\0';
 	tmp = ft_strjoin(buffer, buf);
 	if (!tmp)
@@ -14,9 +27,10 @@ static char	*append_to_buffer(char *buffer, char *buf, int n)
 static char	*read_to_buffer(int fd, char *buffer)
 {
 	char	*read_buf;
-	int	read_value;
+	int		read_value;
 
-	if(!(read_buf = malloc(BUFFER_SIZE + 1)))
+	read_buf = malloc(BUFFER_SIZE + 1);
+	if (!read_buf)
 		return (free(buffer), NULL);
 	read_value = 0;
 	while (!(ft_strchr(buffer, '\n')))
@@ -85,8 +99,8 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = extract_line(buffer);
-	if(!line)
+	if (!line)
 		return (free(buffer), NULL);
 	buffer = update_buffer(buffer);
 	return (line);
-}	
+}

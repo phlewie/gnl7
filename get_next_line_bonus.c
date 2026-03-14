@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: susim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/14 14:26:54 by susim             #+#    #+#             */
+/*   Updated: 2026/03/14 14:27:02 by susim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 static char	*append_to_buffer(char *buffer, char *buf, int n)
 {
 	char	*tmp;
+
 	buf[n] = '\0';
 	tmp = ft_strjoin(buffer, buf);
 	if (!tmp)
@@ -14,9 +27,10 @@ static char	*append_to_buffer(char *buffer, char *buf, int n)
 static char	*read_to_buffer(int fd, char *buffer)
 {
 	char	*read_buf;
-	int	read_value;
+	int		read_value;
 
-	if(!(read_buf = malloc(BUFFER_SIZE + 1)))
+	read_buf = malloc(BUFFER_SIZE + 1);
+	if (!read_buf)
 		return (free(buffer), NULL);
 	read_value = 0;
 	while (!(ft_strchr(buffer, '\n')))
@@ -85,8 +99,8 @@ char	*get_next_line(int fd)
 	if (!buffer[fd])
 		return (NULL);
 	line = extract_line(buffer[fd]);
-	if(!line)
+	if (!line)
 		return (free(buffer[fd]), buffer[fd] = NULL, NULL);
 	buffer[fd] = update_buffer(buffer[fd]);
 	return (line);
-}	
+}

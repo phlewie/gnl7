@@ -104,6 +104,3 @@ More specifically, it was used for :
 - checking the correctness of the overall logic
 - reviewing edge cases
 - discussing design decisions
-
-
-

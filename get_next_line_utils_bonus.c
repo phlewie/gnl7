@@ -1,5 +1,16 @@
-#include <stddef.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: susim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/14 14:27:59 by susim             #+#    #+#             */
+/*   Updated: 2026/03/14 14:28:06 by susim            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -17,7 +28,7 @@ char	*ft_strdup(const char *s)
 {
 	size_t	len;
 	char	*duped;
-	int	i;
+	int		i;
 
 	duped = NULL;
 	len = ft_strlen(s);
@@ -38,7 +49,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	const unsigned char	*s;
 	unsigned char		*d;
-	size_t			i;
+	size_t				i;
 
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
@@ -60,7 +71,7 @@ char	*ft_strchr(const char *s, int c)
 		return (NULL);
 	ptr = (char *)s;
 	to_find = (char)c;
-	while(*ptr)
+	while (*ptr)
 	{
 		if (*ptr == to_find)
 			return (ptr);
